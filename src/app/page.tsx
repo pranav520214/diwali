@@ -117,7 +117,20 @@ function DiwaliExperienceContent() {
               <span>Light a Diya</span>
             </button>
 
-            {/* Button 3: Share the Joy */}
+            {/* Button 3: Vedic Blessings */}
+            <button
+              onClick={() => {
+                audioEngine.playBellChime(587.33);
+                setActiveModal('blessing-mantra');
+              }}
+              className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#20080d] border border-[#ffd700]/60 text-[#ffeec2] font-semibold text-xs sm:text-sm shadow-[0_4px_16px_rgba(0,0,0,0.6)] hover:bg-[#300c14] hover:border-[#ffd700] hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#120306] transition-all cursor-pointer"
+              aria-label="Vedic Shanti Mantra and Divine Blessings"
+            >
+              <BookOpen className="w-4 h-4 text-[#ffd700]" />
+              <span>Vedic Blessing</span>
+            </button>
+
+            {/* Button 4: Share the Joy */}
             <button
               onClick={() => {
                 audioEngine.playBellChime(880);
