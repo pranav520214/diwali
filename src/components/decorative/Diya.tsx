@@ -4,14 +4,14 @@ interface DiyaProps {
   isLit?: boolean;
   size?: number;
   className?: string;
-  flameIntensity?: number; // 0.8 to 1.3
+  flameIntensity?: number;
   onToggleLight?: () => void;
 }
 
 /**
- * Authentic Multi-Tiered Indian Diya Component
- * Includes Mitti (terracotta) base, Peetal (brass) rim,
- * Tel Kund (oil reservoir), charred wick, and quad-layer dynamic flame.
+ * Authentic Handcrafted Royal Brass Diya Component
+ * Includes stepped brass pedestal, fluted collar, etched lotus bowl,
+ * clarified ghee pool, cotton wick, and 5-tier living flame.
  */
 export const Diya: React.FC<DiyaProps> = ({
   isLit = true,
@@ -27,213 +27,104 @@ export const Diya: React.FC<DiyaProps> = ({
       onClick={onToggleLight}
       role="button"
       tabIndex={0}
-      aria-label={isLit ? "Extinguish or adjust Diya flame" : "Light the sacred Diya"}
+      aria-label={isLit ? 'Extinguish or adjust Diya flame' : 'Light the sacred Diya'}
     >
       <svg
         viewBox="0 0 200 230"
         width="100%"
         height="100%"
-        className="overflow-visible"
+        className="overflow-visible drop-shadow-[0_10px_25px_rgba(0,0,0,0.8)]"
       >
         <defs>
-          {/* Terracotta Clay Gradient */}
-          <radialGradient id="clayBaseGrad" cx="50%" cy="30%" r="70%">
-            <stop offset="0%" stopColor="#8C4421" />
-            <stop offset="60%" stopColor="#5E2810" />
-            <stop offset="100%" stopColor="#381507" />
-          </radialGradient>
-
-          {/* Brass Rim Shimmer */}
-          <linearGradient id="brassRimGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#876512" />
-            <stop offset="25%" stopColor="#D4AF37" />
-            <stop offset="50%" stopColor="#FFF4B8" />
-            <stop offset="75%" stopColor="#D4AF37" />
-            <stop offset="100%" stopColor="#876512" />
+          {/* Antique Brass Surface */}
+          <linearGradient id="compBrassGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#422507" />
+            <stop offset="25%" stopColor="#875816" />
+            <stop offset="50%" stopColor="#ffd700" />
+            <stop offset="70%" stopColor="#fff8cf" />
+            <stop offset="85%" stopColor="#c59b27" />
+            <stop offset="100%" stopColor="#301902" />
           </linearGradient>
 
-          {/* Oil Reservoir Liquid */}
-          <radialGradient id="oilPoolGrad" cx="50%" cy="50%" r="60%">
-            <stop offset="0%" stopColor="#5E320A" />
-            <stop offset="70%" stopColor="#301502" />
-            <stop offset="100%" stopColor="#170901" />
+          {/* Golden Ghee Pool */}
+          <radialGradient id="compGheeGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#ffb703" />
+            <stop offset="50%" stopColor="#e85d04" />
+            <stop offset="85%" stopColor="#782902" />
+            <stop offset="100%" stopColor="#2b0f02" />
           </radialGradient>
 
           {/* Flame Gradients */}
-          {/* 1. Core White-Cyan */}
-          <linearGradient id="flameCoreGrad" x1="0%" y1="100%" x2="0%" y2="0%">
-            <stop offset="0%" stopColor="#E0F7FA" />
-            <stop offset="40%" stopColor="#FFFFFF" />
-            <stop offset="100%" stopColor="#FFFEE0" />
-          </linearGradient>
-
-          {/* 2. Inner Amber Mantle */}
-          <linearGradient id="flameInnerGrad" x1="0%" y1="100%" x2="0%" y2="0%">
-            <stop offset="0%" stopColor="#FFB703" />
-            <stop offset="60%" stopColor="#FFE066" />
-            <stop offset="100%" stopColor="#FFF4B8" />
-          </linearGradient>
-
-          {/* 3. Mid Saffron Body */}
-          <linearGradient id="flameMidGrad" x1="0%" y1="100%" x2="0%" y2="0%">
-            <stop offset="0%" stopColor="#E85D04" />
-            <stop offset="50%" stopColor="#FF7700" />
-            <stop offset="100%" stopColor="#FFA033" />
-          </linearGradient>
-
-          {/* 4. Outer Crimson Halo */}
-          <radialGradient id="flameHaloGrad" cx="50%" cy="65%" r="55%">
-            <stop offset="0%" stopColor="#FF7700" stopOpacity="0.8" />
-            <stop offset="50%" stopColor="#DE1360" stopOpacity="0.4" />
-            <stop offset="100%" stopColor="#580614" stopOpacity="0" />
+          <radialGradient id="compFlameCore" cx="50%" cy="75%" r="65%">
+            <stop offset="0%" stopColor="#ffffff" />
+            <stop offset="30%" stopColor="#fff275" />
+            <stop offset="65%" stopColor="#ff9900" />
+            <stop offset="90%" stopColor="#ff4500" />
+            <stop offset="100%" stopColor="transparent" />
           </radialGradient>
 
-          {/* Ground Caustic Glow */}
-          <radialGradient id="groundGlowGrad" cx="50%" cy="30%" r="60%">
-            <stop offset="0%" stopColor="#FFA033" stopOpacity={isLit ? 0.7 * flameIntensity : 0.05} />
-            <stop offset="50%" stopColor="#DE1360" stopOpacity={isLit ? 0.3 * flameIntensity : 0} />
-            <stop offset="100%" stopColor="#120208" stopOpacity="0" />
+          {/* Caustic Ground Glow */}
+          <radialGradient id="compGroundGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#ffaa00" stopOpacity={isLit ? 0.6 * flameIntensity : 0.05} />
+            <stop offset="60%" stopColor="#e85d04" stopOpacity={isLit ? 0.25 * flameIntensity : 0} />
+            <stop offset="100%" stopColor="transparent" />
           </radialGradient>
-
-          {/* Blur Filters */}
-          <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="6" />
-          </filter>
-          <filter id="coronaBlur" x="-60%" y="-60%" width="220%" height="220%">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="14" />
-          </filter>
         </defs>
 
-        {/* Ambient Ground Glow Pool */}
-        <ellipse
-          cx="100"
-          cy="200"
-          rx="90"
-          ry="25"
-          fill="url(#groundGlowGrad)"
-          className="transition-all duration-700"
-        />
+        {/* Ambient Floor Glow */}
+        <ellipse cx="100" cy="208" rx="85" ry="16" fill="url(#compGroundGlow)" />
 
-        {/* --- CLAY BASE & VESSEL --- */}
-        {/* Terracotta Vessel Body */}
+        {/* Stepped Pedestal Base */}
+        <ellipse cx="100" cy="198" rx="48" ry="10" fill="url(#compBrassGrad)" stroke="#2b1502" strokeWidth="1" />
+        <ellipse cx="100" cy="192" rx="34" ry="6" fill="url(#compBrassGrad)" />
+
+        {/* Fluted Waist */}
+        <path d="M 78,192 C 82,178 86,170 86,162 L 114,162 C 114,170 118,178 122,192 Z" fill="url(#compBrassGrad)" />
+
+        {/* Vessel Bowl */}
         <path
-          d="M 30,150 C 30,195 70,210 100,210 C 130,210 170,195 170,150 C 170,140 160,135 150,135 C 130,135 70,135 50,135 C 40,135 30,140 30,150 Z"
-          fill="url(#clayBaseGrad)"
-          stroke="#4A1E0D"
-          strokeWidth="1.5"
+          d="M 28,142 C 38,180 162,180 172,142 C 176,134 168,131 162,133 C 130,144 70,144 38,133 C 32,131 24,134 28,142 Z"
+          fill="url(#compBrassGrad)"
+          stroke="#422507"
+          strokeWidth="1.2"
         />
 
-        {/* Base Highlights & Relief Curves */}
+        {/* Etched Relief along front */}
         <path
-          d="M 45,160 C 55,188 80,198 100,198 C 120,198 145,188 155,160"
+          d="M 45,152 Q 72,172 100,152 Q 128,172 155,152"
           fill="none"
-          stroke="#994D26"
-          strokeWidth="1.8"
-          strokeLinecap="round"
-          opacity="0.6"
+          stroke="#fff4b8"
+          strokeWidth="1.2"
+          opacity="0.75"
         />
 
-        {/* Oil Reservoir Surface (Tel Kund) */}
-        <ellipse
-          cx="100"
-          cy="142"
-          rx="58"
-          ry="14"
-          fill="url(#oilPoolGrad)"
-          stroke="#2A0F02"
-          strokeWidth="1"
-        />
+        {/* Ghee Pool Surface */}
+        <ellipse cx="100" cy="138" rx="68" ry="12" fill="url(#compGheeGrad)" stroke="#ffd700" strokeWidth="1.5" />
 
-        {/* Dynamic Oil Reflection Wave when Lit */}
-        {isLit && (
-          <ellipse
-            cx="100"
-            cy="141"
-            rx="24"
-            ry="6"
-            fill="#FFA033"
-            opacity="0.35"
-            filter="url(#softGlow)"
-          />
-        )}
-
-        {/* Polished Brass Filigree Rim */}
-        <ellipse
-          cx="100"
-          cy="138"
-          rx="66"
-          ry="11"
-          fill="none"
-          stroke="url(#brassRimGrad)"
-          strokeWidth="3.5"
-        />
-
-        {/* Decorative Kundan Rim Beads */}
-        {[38, 52, 70, 90, 100, 110, 130, 148, 162].map((x, idx) => (
-          <circle
-            key={idx}
-            cx={x}
-            cy={138 + Math.sin((x / 200) * Math.PI) * 5}
-            r="2"
-            fill="#FFF4B8"
-            stroke="#876512"
-            strokeWidth="0.6"
-          />
+        {/* Rim Beads */}
+        {[36, 50, 68, 86, 100, 114, 132, 150, 164].map((x, idx) => (
+          <circle key={idx} cx={x} cy={138 + Math.sin((x / 200) * Math.PI) * 5} r="1.8" fill="#fff8cf" stroke="#543706" strokeWidth="0.5" />
         ))}
 
-        {/* Cotton Wick (Rui ki Baati) */}
-        <path
-          d="M 100,144 Q 99,132 101,118"
-          fill="none"
-          stroke="#FAF2DE"
-          strokeWidth="3.5"
-          strokeLinecap="round"
-        />
-        {/* Charred Tip */}
-        <circle cx="101" cy="117" r="2.2" fill="#1C120C" />
+        {/* Cotton Wick */}
+        <path d="M 100,142 Q 101,130 100,118" stroke="#fffbe6" strokeWidth="3" strokeLinecap="round" />
+        <circle cx="100" cy="117" r="2" fill="#1f1105" />
 
-        {/* --- LIVING FLAME SYSTEM (When Lit) --- */}
+        {/* Flame */}
         {isLit && (
-          <g className="diya-flame-system origin-bottom" style={{ transformOrigin: '101px 118px' }}>
-            {/* Outer Diffuse Corona Glow */}
-            <circle
-              cx="101"
-              cy="75"
-              r="48"
-              fill="url(#flameHaloGrad)"
-              filter="url(#coronaBlur)"
-              className="animate-pulse"
-              style={{ animationDuration: '3s' }}
-            />
-
-            {/* Mid Saffron Flame */}
+          <g className="animate-flame" style={{ transformOrigin: '100px 118px' }}>
+            <circle cx="100" cy="78" r="32" fill="#ff7700" opacity="0.3" filter="blur(8px)" />
             <path
-              d="M 101,118 C 88,112 80,92 88,72 C 94,56 101,32 101,24 C 101,32 108,56 114,72 C 122,92 114,112 101,118 Z"
-              fill="url(#flameMidGrad)"
-              filter="url(#softGlow)"
-              opacity="0.85"
+              d="M 100,118 C 86,110 76,90 84,68 C 90,52 100,30 100,20 C 100,30 110,52 116,68 C 124,90 114,110 100,118 Z"
+              fill="url(#compFlameCore)"
+              filter="drop-shadow(0 0 10px #ff9000)"
             />
-
-            {/* Inner Vibrant Flame Mantle */}
             <path
-              d="M 101,118 C 91,114 85,96 91,78 C 96,64 101,44 101,38 C 101,44 106,64 111,78 C 117,96 111,114 101,118 Z"
-              fill="url(#flameInnerGrad)"
+              d="M 100,116 C 93,112 88,98 92,80 C 95,68 100,50 100,42 C 100,50 105,68 108,80 C 112,98 107,112 100,116 Z"
+              fill="#ffffff"
+              opacity="0.95"
             />
-
-            {/* Incandescent Core Flame */}
-            <path
-              d="M 101,117 C 95,114 93,103 96,90 C 98,81 101,65 101,60 C 101,65 104,81 106,90 C 109,103 107,114 101,117 Z"
-              fill="url(#flameCoreGrad)"
-            />
-
-            {/* Electric Center Spark */}
-            <ellipse
-              cx="101"
-              cy="98"
-              rx="2.5"
-              ry="8"
-              fill="#FFFFFF"
-            />
+            <ellipse cx="100" cy="115" rx="7" ry="3" fill="#4361ee" opacity="0.85" />
           </g>
         )}
       </svg>

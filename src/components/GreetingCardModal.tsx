@@ -255,13 +255,13 @@ export const GreetingCardModal: React.FC<GreetingCardModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md overflow-y-auto">
-      <div className="relative w-full max-w-4xl bg-[#140407] border border-[#ffd700]/50 rounded-2xl shadow-[0_15px_50px_rgba(0,0,0,0.95)] overflow-hidden my-6">
+      <div className="relative w-full max-w-4xl bg-[#140407] border border-[#d4af37]/50 rounded-2xl shadow-[0_15px_50px_rgba(0,0,0,0.95)] overflow-hidden my-6">
         {/* Modal Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-[#ffd700]/20 bg-[#1c070c]">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-[#d4af37]/20 bg-[#1c070c]">
           <div className="flex items-center gap-2">
-            <Flame className="w-5 h-5 text-[#ffd700] fill-current" />
+            <Flame className="w-5 h-5 text-[#d4af37] fill-current" />
             <h3
-              className="text-lg sm:text-xl font-bold tracking-wide text-[#ffd700]"
+              className="text-lg sm:text-xl font-bold tracking-wide text-[#fae5b6]"
               style={{ fontFamily: 'var(--font-cinzel), serif' }}
             >
               Custom Royal Diwali Greeting

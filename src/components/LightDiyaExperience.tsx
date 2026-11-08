@@ -89,7 +89,7 @@ export const LightDiyaExperience: React.FC<LightDiyaExperienceProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md overflow-y-auto">
-      <div className="relative w-full max-w-2xl bg-[#170508] border border-[#ffd700]/50 rounded-2xl shadow-[0_15px_50px_rgba(0,0,0,0.95)] overflow-hidden my-6">
+      <div className="relative w-full max-w-2xl bg-[#170508] border border-[#d4af37]/50 rounded-2xl shadow-[0_15px_50px_rgba(0,0,0,0.95)] overflow-hidden my-6">
         {/* Close Button */}
         <button
           onClick={onClose}
@@ -99,12 +99,12 @@ export const LightDiyaExperience: React.FC<LightDiyaExperienceProps> = ({
         </button>
 
         {/* Modal Header */}
-        <div className="px-6 pt-6 pb-4 text-center border-b border-[#ffd700]/20 bg-[#20080d]">
-          <div className="inline-flex p-3 rounded-full bg-[#ffd700]/10 border border-[#ffd700]/30 text-[#ffd700] mb-2 shadow-[0_0_20px_rgba(255,215,0,0.2)]">
-            <Flame className="w-7 h-7 text-[#ff7700] fill-current animate-pulse" />
+        <div className="px-6 pt-6 pb-4 text-center border-b border-[#d4af37]/20 bg-[#20080d]">
+          <div className="inline-flex p-3 rounded-full bg-[#d4af37]/10 border border-[#d4af37]/30 text-[#d4af37] mb-2 shadow-[0_0_20px_rgba(212,175,55,0.2)]">
+            <Flame className="w-7 h-7 text-[#ff8c00] fill-current animate-pulse" />
           </div>
           <h3
-            className="text-2xl sm:text-3xl font-black text-[#ffd700] tracking-wide"
+            className="text-2xl sm:text-3xl font-black text-[#fae5b6] tracking-wide"
             style={{ fontFamily: 'var(--font-cinzel), serif' }}
           >
             Light a Diya for the World

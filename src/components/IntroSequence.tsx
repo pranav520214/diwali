@@ -344,46 +344,44 @@ export const IntroSequence: React.FC<IntroSequenceProps> = ({ onComplete }) => {
             ref={(el) => {
               setElementRef('diyaHalfLeft', el);
             }}
-            className="absolute left-0 top-12 w-1/2 h-44 diya-half-left overflow-visible"
+            className="absolute left-0 top-10 w-1/2 h-44 diya-half-left overflow-visible"
           >
             <svg viewBox="0 0 160 140" className="w-full h-full overflow-visible drop-shadow-[0_15px_30px_rgba(0,0,0,0.9)]">
               <defs>
-                <linearGradient id="brassLeftGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#876512" />
-                  <stop offset="40%" stopColor="#d4af37" />
-                  <stop offset="85%" stopColor="#fff4b8" />
-                  <stop offset="100%" stopColor="#d4af37" />
+                <linearGradient id="brassLeftGradReal" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#422507" />
+                  <stop offset="30%" stopColor="#875816" />
+                  <stop offset="65%" stopColor="#d4af37" />
+                  <stop offset="85%" stopColor="#fff8cf" />
+                  <stop offset="100%" stopColor="#c59b27" />
                 </linearGradient>
-                <radialGradient id="clayLeftGrad" cx="30%" cy="40%" r="80%">
-                  <stop offset="0%" stopColor="#8c4421" />
-                  <stop offset="70%" stopColor="#4a1c09" />
-                  <stop offset="100%" stopColor="#250901" />
-                </radialGradient>
               </defs>
-              {/* Terracotta Belly Left */}
+              {/* Cast Brass Shell Left */}
               <path
                 d="M 160,20 C 110,20 30,35 10,70 C -10,105 50,135 160,135 Z"
-                fill="url(#clayLeftGrad)"
-                stroke="#63260e"
-                strokeWidth="1.5"
+                fill="url(#brassLeftGradReal)"
+                stroke="#381c03"
+                strokeWidth="1.6"
               />
-              {/* Ornate Brass Rim Left */}
+              {/* Ornate Scalloped Brass Rim Left */}
               <path
                 d="M 160,20 C 110,20 30,32 10,55 C 25,65 100,65 160,65 Z"
-                fill="url(#brassLeftGrad)"
-                stroke="#ffd700"
-                strokeWidth="1.2"
+                fill="#ffd700"
+                stroke="#fff8cf"
+                strokeWidth="1"
+                opacity="0.8"
               />
-              {/* Carved Jaali / Petal Motifs on Belly */}
+              {/* Carved Lotus Petal Motifs on Belly */}
               <path
                 d="M 60,65 Q 85,95 110,65 Q 135,95 160,65"
                 fill="none"
-                stroke="#ffd700"
-                strokeWidth="1.5"
-                opacity="0.8"
+                stroke="#fff4b8"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+                opacity="0.85"
               />
-              <circle cx="85" cy="85" r="3.5" fill="#ffd700" />
-              <circle cx="135" cy="85" r="3.5" fill="#ffd700" />
+              <circle cx="85" cy="85" r="3" fill="#fff4b8" stroke="#543806" strokeWidth="0.6" />
+              <circle cx="135" cy="85" r="3" fill="#fff4b8" stroke="#543806" strokeWidth="0.6" />
             </svg>
           </div>
 
@@ -392,55 +390,53 @@ export const IntroSequence: React.FC<IntroSequenceProps> = ({ onComplete }) => {
             ref={(el) => {
               setElementRef('diyaHalfRight', el);
             }}
-            className="absolute right-0 top-12 w-1/2 h-44 diya-half-right overflow-visible"
+            className="absolute right-0 top-10 w-1/2 h-44 diya-half-right overflow-visible"
           >
             <svg viewBox="0 0 160 140" className="w-full h-full overflow-visible drop-shadow-[0_15px_30px_rgba(0,0,0,0.9)]">
               <defs>
-                <linearGradient id="brassRightGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#d4af37" />
-                  <stop offset="25%" stopColor="#fff4b8" />
-                  <stop offset="70%" stopColor="#d4af37" />
-                  <stop offset="100%" stopColor="#876512" />
+                <linearGradient id="brassRightGradReal" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#c59b27" />
+                  <stop offset="15%" stopColor="#fff8cf" />
+                  <stop offset="35%" stopColor="#d4af37" />
+                  <stop offset="70%" stopColor="#875816" />
+                  <stop offset="100%" stopColor="#422507" />
                 </linearGradient>
-                <radialGradient id="clayRightGrad" cx="70%" cy="40%" r="80%">
-                  <stop offset="0%" stopColor="#8c4421" />
-                  <stop offset="70%" stopColor="#4a1c09" />
-                  <stop offset="100%" stopColor="#250901" />
-                </radialGradient>
               </defs>
-              {/* Terracotta Belly Right */}
+              {/* Cast Brass Shell Right */}
               <path
                 d="M 0,20 C 50,20 130,35 150,70 C 170,105 110,135 0,135 Z"
-                fill="url(#clayRightGrad)"
-                stroke="#63260e"
-                strokeWidth="1.5"
+                fill="url(#brassRightGradReal)"
+                stroke="#381c03"
+                strokeWidth="1.6"
               />
-              {/* Ornate Brass Rim Right */}
+              {/* Ornate Scalloped Brass Rim Right */}
               <path
                 d="M 0,20 C 50,20 130,32 150,55 C 135,65 60,65 0,65 Z"
-                fill="url(#brassRightGrad)"
-                stroke="#ffd700"
-                strokeWidth="1.2"
+                fill="#ffd700"
+                stroke="#fff8cf"
+                strokeWidth="1"
+                opacity="0.8"
               />
-              {/* Carved Jaali / Petal Motifs on Belly */}
+              {/* Carved Lotus Petal Motifs on Belly */}
               <path
                 d="M 0,65 Q 25,95 50,65 Q 75,95 100,65"
                 fill="none"
-                stroke="#ffd700"
-                strokeWidth="1.5"
-                opacity="0.8"
+                stroke="#fff4b8"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+                opacity="0.85"
               />
-              <circle cx="25" cy="85" r="3.5" fill="#ffd700" />
-              <circle cx="75" cy="85" r="3.5" fill="#ffd700" />
+              <circle cx="25" cy="85" r="3" fill="#fff4b8" stroke="#543806" strokeWidth="0.6" />
+              <circle cx="75" cy="85" r="3" fill="#fff4b8" stroke="#543806" strokeWidth="0.6" />
             </svg>
           </div>
 
-          {/* Diya Base Pedestal */}
+          {/* Stepped Royal Brass Base Pedestal */}
           <div
             ref={(el) => {
               setElementRef('diyaBase', el);
             }}
-            className="absolute bottom-2 left-1/2 -translate-x-1/2 w-40 h-8 rounded-full bg-gradient-to-r from-[#5a1c06] via-[#9e4215] to-[#5a1c06] border border-[#ffd700]/50 shadow-[0_5px_15px_rgba(0,0,0,0.8)] z-28"
+            className="absolute bottom-1 left-1/2 -translate-x-1/2 w-44 h-9 rounded-full bg-gradient-to-r from-[#422507] via-[#d4af37] to-[#422507] border border-[#fff4b8]/70 shadow-[0_8px_20px_rgba(0,0,0,0.9)] z-28"
           />
         </div>
 

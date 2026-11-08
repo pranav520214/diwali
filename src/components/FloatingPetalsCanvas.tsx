@@ -30,6 +30,13 @@ interface Ember {
   color: string;
 }
 
+/**
+ * Restrained & Graceful Marigold Petals & Golden Embers
+ * - Subtle, slow, cinematic floating motion (low density)
+ * - 3D tumbling petals with organic wind sway
+ * - Upward drifting warm candle embers
+ * - Auto-pauses on background tabs via Page Visibility API
+ */
 export const FloatingPetalsCanvas: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
@@ -70,161 +77,124 @@ export const FloatingPetalsCanvas: React.FC = () => {
     };
     document.addEventListener('visibilitychange', handleVisibilityChange);
 
-    // Color palettes
+    // Warm authentic festive palette
     const petalColors = [
-      '#FF7F00', // Saffron Orange
-      '#FFA500', // Marigold Yellow-Orange
-      '#FFD700', // Golden Genda
-      '#E63946', // Deep Festive Vermillion
-      '#D00000', // Sindoor Crimson
-      '#FFBF00', // Amber Gold
+      '#f77f00', // Saffron
+      '#fcbf49', // Warm Marigold Gold
+      '#e63946', // Royal Crimson
+      '#d62828', // Deep Sindoor
+      '#d4af37', // Antique Gold Leaf
     ];
 
-    const emberColors = ['#FFE259', '#FFA751', '#FFD700', '#FFF5B8'];
+    const emberColors = ['#fff3b0', '#ffd700', '#ffaa00'];
 
-    const petalCount = width < 768 ? 22 : 45;
-    const emberCount = width < 768 ? 25 : 55;
+    // Restrained counts for elegant, non-cluttered atmosphere
+    const petalCount = width < 768 ? 8 : 15;
+    const emberCount = width < 768 ? 10 : 18;
 
     // Create Petals
     const petals: Petal[] = Array.from({ length: petalCount }, () => ({
       x: Math.random() * width,
-      y: Math.random() * height - height,
-      size: Math.random() * 12 + 8,
-      speedY: Math.random() * 1.2 + 0.6,
-      speedX: (Math.random() - 0.5) * 0.8,
+      y: Math.random() * height,
+      size: Math.random() * 8 + 8,
+      speedY: Math.random() * 0.45 + 0.35, // Slow, meditative float
+      speedX: (Math.random() - 0.5) * 0.4,
       rotation: Math.random() * 360,
-      rotationSpeed: (Math.random() - 0.5) * 1.5,
+      rotationSpeed: (Math.random() - 0.5) * 0.8,
       flip: Math.random() * Math.PI,
-      flipSpeed: Math.random() * 0.03 + 0.015,
+      flipSpeed: Math.random() * 0.015 + 0.008,
       color: petalColors[Math.floor(Math.random() * petalColors.length)],
-      opacity: Math.random() * 0.35 + 0.65,
+      opacity: Math.random() * 0.35 + 0.5,
       swayOffset: Math.random() * Math.PI * 2,
-      swaySpeed: Math.random() * 0.02 + 0.01,
+      swaySpeed: Math.random() * 0.015 + 0.008,
     }));
 
-    // Create Embers
-    const embers: Ember[] = Array.from({ length: emberCount }, () => ({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      radius: Math.random() * 2 + 0.7,
-      speedY: -(Math.random() * 0.7 + 0.3),
-      speedX: (Math.random() - 0.5) * 0.5,
-      alpha: Math.random() * 0.8,
-      maxAlpha: Math.random() * 0.6 + 0.4,
-      pulseSpeed: Math.random() * 0.03 + 0.01,
-      color: emberColors[Math.floor(Math.random() * emberColors.length)],
-    }));
+    // Create Golden Embers
+    const embers: Ember[] = Array.from({ length: emberCount }, () => {
+      const maxAlpha = Math.random() * 0.5 + 0.3;
+      return {
+        x: Math.random() * width,
+        y: Math.random() * height,
+        radius: Math.random() * 1.5 + 0.8,
+        speedY: -(Math.random() * 0.4 + 0.2), // Upward drift
+        speedX: (Math.random() - 0.5) * 0.3,
+        alpha: Math.random() * maxAlpha,
+        maxAlpha,
+        pulseSpeed: Math.random() * 0.02 + 0.01,
+        color: emberColors[Math.floor(Math.random() * emberColors.length)],
+      };
+    });
 
     const drawPetal = (p: Petal) => {
       ctx.save();
       ctx.translate(p.x, p.y);
       ctx.rotate((p.rotation * Math.PI) / 180);
-      const scaleX = Math.cos(p.flip);
-      ctx.scale(scaleX, 1);
+      ctx.scale(1, Math.cos(p.flip));
 
       ctx.beginPath();
-      // Curved marigold petal shape
       ctx.moveTo(0, -p.size);
-      ctx.bezierCurveTo(
-        p.size * 0.7,
-        -p.size * 0.5,
-        p.size * 0.8,
-        p.size * 0.3,
-        0,
-        p.size
-      );
-      ctx.bezierCurveTo(
-        -p.size * 0.8,
-        p.size * 0.3,
-        -p.size * 0.7,
-        -p.size * 0.5,
-        0,
-        -p.size
-      );
+      ctx.bezierCurveTo(p.size * 0.5, -p.size * 0.5, p.size * 0.6, p.size * 0.5, 0, p.size);
+      ctx.bezierCurveTo(-p.size * 0.6, p.size * 0.5, -p.size * 0.5, -p.size * 0.5, 0, -p.size);
 
       ctx.fillStyle = p.color;
       ctx.globalAlpha = p.opacity;
-      ctx.shadowColor = '#FF9F1C';
+      ctx.shadowColor = p.color;
       ctx.shadowBlur = 6;
       ctx.fill();
-
-      // Delicate inner vein
-      ctx.beginPath();
-      ctx.moveTo(0, -p.size * 0.7);
-      ctx.lineTo(0, p.size * 0.6);
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.35)';
-      ctx.lineWidth = 0.8;
-      ctx.stroke();
 
       ctx.restore();
     };
 
     const drawEmber = (e: Ember) => {
       ctx.save();
-      const glowGrad = ctx.createRadialGradient(
-        e.x,
-        e.y,
-        0,
-        e.x,
-        e.y,
-        e.radius * 3.5
-      );
-      glowGrad.addColorStop(0, e.color);
-      glowGrad.addColorStop(0.3, e.color);
-      glowGrad.addColorStop(1, 'rgba(255, 215, 0, 0)');
-
-      ctx.fillStyle = glowGrad;
-      ctx.globalAlpha = e.alpha;
       ctx.beginPath();
-      ctx.arc(e.x, e.y, e.radius * 3.5, 0, Math.PI * 2);
+      ctx.arc(e.x, e.y, e.radius, 0, Math.PI * 2);
+      ctx.fillStyle = e.color;
+      ctx.globalAlpha = Math.max(0, e.alpha);
+      ctx.shadowColor = '#ffd700';
+      ctx.shadowBlur = 8;
       ctx.fill();
-
-      // Sharp white hot core
-      ctx.fillStyle = '#FFFFFF';
-      ctx.beginPath();
-      ctx.arc(e.x, e.y, e.radius * 0.6, 0, Math.PI * 2);
-      ctx.fill();
-
       ctx.restore();
     };
+
+    let lastTime = performance.now();
 
     const render = (time: number) => {
       if (!isTabVisible) return;
 
+      const delta = Math.min((time - lastTime) / 16.67, 2);
+      lastTime = time;
+
       ctx.clearRect(0, 0, width, height);
 
-      // Render & Update Embers
+      // Update & Draw Embers
       for (let i = 0; i < embers.length; i++) {
         const e = embers[i];
-        e.y += e.speedY;
-        e.x += e.speedX + Math.sin(time * 0.001 + i) * 0.3;
-        e.alpha = (Math.sin(time * e.pulseSpeed) + 1) * 0.5 * e.maxAlpha;
+        e.y += e.speedY * delta;
+        e.x += e.speedX * delta;
+        e.alpha += Math.sin(time * e.pulseSpeed) * 0.01;
 
-        if (e.y < -10) {
+        if (e.y < -20) {
           e.y = height + 10;
           e.x = Math.random() * width;
         }
-        if (e.x < -10) e.x = width + 10;
-        if (e.x > width + 10) e.x = -10;
 
         drawEmber(e);
       }
 
-      // Render & Update Petals
+      // Update & Draw Petals
       for (let i = 0; i < petals.length; i++) {
         const p = petals[i];
-        p.swayOffset += p.swaySpeed;
-        p.x += Math.sin(p.swayOffset) * 1.5 + p.speedX;
-        p.y += p.speedY;
-        p.rotation += p.rotationSpeed;
-        p.flip += p.flipSpeed;
+        p.swayOffset += p.swaySpeed * delta;
+        p.y += p.speedY * delta;
+        p.x += (p.speedX + Math.sin(p.swayOffset) * 0.6) * delta;
+        p.rotation += p.rotationSpeed * delta;
+        p.flip += p.flipSpeed * delta;
 
-        if (p.y > height + 25) {
-          p.y = -25;
+        if (p.y > height + 20) {
+          p.y = -20;
           p.x = Math.random() * width;
         }
-        if (p.x < -30) p.x = width + 30;
-        if (p.x > width + 30) p.x = -30;
 
         drawPetal(p);
       }
@@ -244,7 +214,7 @@ export const FloatingPetalsCanvas: React.FC = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="pointer-events-none fixed inset-0 z-10 h-full w-full"
+      className="pointer-events-none fixed inset-0 z-10 w-full h-full"
       aria-hidden="true"
     />
   );

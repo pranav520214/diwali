@@ -85,7 +85,7 @@ export const ShareModal: React.FC<ShareModalProps> = ({ isOpen, onClose }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md">
-      <div className="relative w-full max-w-md bg-[#160508] border border-[#ffd700]/50 rounded-2xl shadow-[0_15px_50px_rgba(0,0,0,0.95)] p-6 overflow-hidden">
+      <div className="relative w-full max-w-md bg-[#160508] border border-[#d4af37]/50 rounded-2xl shadow-[0_15px_50px_rgba(0,0,0,0.95)] p-6 overflow-hidden">
         {/* Close Button */}
         <button
           onClick={onClose}
@@ -96,11 +96,11 @@ export const ShareModal: React.FC<ShareModalProps> = ({ isOpen, onClose }) => {
 
         {/* Modal Header */}
         <div className="text-center mb-6">
-          <div className="inline-flex p-3 rounded-full bg-[#ffd700]/10 border border-[#ffd700]/30 text-[#ffd700] mb-3 shadow-[0_0_20px_rgba(255,215,0,0.2)]">
+          <div className="inline-flex p-3 rounded-full bg-[#d4af37]/10 border border-[#d4af37]/30 text-[#d4af37] mb-3 shadow-[0_0_20px_rgba(212,175,55,0.2)]">
             <Share2 className="w-6 h-6 animate-pulse" />
           </div>
           <h3
-            className="text-2xl font-bold text-[#ffd700] tracking-wide"
+            className="text-2xl font-bold text-[#fae5b6] tracking-wide"
             style={{ fontFamily: 'var(--font-cinzel), serif' }}
           >
             Share the Festive Joy

@@ -41,57 +41,108 @@ body {
   border-radius: 9999px;
 }
 
-/* Liquid Metallic Gold Shimmer */
+/* Liquid Metallic Antique Gold Shimmer (Editorial Luxury) */
 .gold-shimmer-text {
   background: linear-gradient(
     135deg,
-    #ffd700 0%,
-    #fff8dc 25%,
-    #ffb703 50%,
-    #ffeaa7 75%,
-    #d4af37 100%
+    #fcf6ba 0%,
+    #d4af37 25%,
+    #bf953f 45%,
+    #fbf5b7 65%,
+    #aa771c 100%
   );
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: shimmer 6s linear infinite;
+  animation: shimmer 8s ease-in-out infinite alternate;
+}
+
+.antique-gold-text {
+  background: linear-gradient(
+    180deg,
+    #fff8e1 0%,
+    #f3ce5a 30%,
+    #d4af37 60%,
+    #a8791c 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 @keyframes shimmer {
   0% {
     background-position: 0% 50%;
   }
-  50% {
-    background-position: 100% 50%;
-  }
   100% {
-    background-position: 0% 50%;
+    background-position: 100% 50%;
   }
 }
 
-/* Flame Flicker */
-@keyframes flame-flutter {
-  0%, 100% {
-    transform: scale(1) rotate(-1deg);
-    opacity: 0.96;
+/* Organic Realistic Flame Flicker */
+@keyframes flame-organic {
+  0% {
+    transform: scale(1, 1) skewX(-0.5deg);
+    opacity: 0.98;
   }
-  25% {
-    transform: scale(1.04, 0.97) rotate(1.5deg);
+  20% {
+    transform: scale(1.02, 0.98) skewX(1deg);
     opacity: 1;
   }
-  50% {
-    transform: scale(0.97, 1.05) rotate(-1.5deg);
-    opacity: 0.92;
+  40% {
+    transform: scale(0.98, 1.03) skewX(-1.2deg);
+    opacity: 0.94;
   }
-  75% {
-    transform: scale(1.02, 1.01) rotate(0.8deg);
+  60% {
+    transform: scale(1.01, 0.99) skewX(0.8deg);
+    opacity: 0.99;
+  }
+  80% {
+    transform: scale(0.99, 1.02) skewX(-0.6deg);
+    opacity: 0.95;
+  }
+  100% {
+    transform: scale(1.01, 1) skewX(0.5deg);
     opacity: 0.98;
   }
 }
 
 .animate-flame {
-  animation: flame-flutter 1.8s ease-in-out infinite alternate;
-  transform-origin: 50% 90%;
+  animation: flame-organic 2.8s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
+  transform-origin: 50% 95%;
+}
+
+/* Subtle Natural Toran Sway */
+@keyframes toran-pendulum-sway {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  33% {
+    transform: rotate(0.6deg);
+  }
+  66% {
+    transform: rotate(-0.5deg);
+  }
+}
+
+.animate-toran-sway {
+  animation: toran-pendulum-sway 6.5s ease-in-out infinite;
+  transform-origin: 50% 0%;
+}
+
+/* Subtle Atmospheric Light Breathing */
+@keyframes atmospheric-light-pulse {
+  0%, 100% {
+    opacity: 0.82;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+}
+
+.animate-ambient-light {
+  animation: atmospheric-light-pulse 7s ease-in-out infinite;
 }
 
 /* Flame Aura Glow */

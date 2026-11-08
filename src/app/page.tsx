@@ -7,6 +7,7 @@ import { FestiveBackground } from '@/components/FestiveBackground';
 import { FloatingPetalsCanvas } from '@/components/FloatingPetalsCanvas';
 import { ToranArch } from '@/components/decorative/ToranArch';
 import { JharokhaFrame } from '@/components/decorative/JharokhaFrame';
+import { CornerDiyas } from '@/components/decorative/CornerDiyas';
 import { FestiveHeader } from '@/components/FestiveHeader';
 import { DiyaStage } from '@/components/DiyaStage';
 import { IntroSequence } from '@/components/IntroSequence';
@@ -59,124 +60,136 @@ function DiwaliExperienceContent() {
   };
 
   return (
-    <main className="relative min-h-screen w-full flex flex-col justify-between overflow-x-hidden">
-      {/* Background & Atmosphere */}
+    <main className="relative min-h-screen w-full flex flex-col justify-between overflow-x-hidden selection:bg-[#ffd700]/30 selection:text-[#ffd700]">
+      {/* 1. Authentic Velvet Background, Texture & Ambient Amber Glow */}
       <FestiveBackground />
       <FloatingPetalsCanvas />
 
-      {/* Cinematic Intro Sequence */}
+      {/* 2. Flanking Grounded Brass Corner Diyas */}
+      <CornerDiyas />
+
+      {/* 3. Cinematic 4-Scene GSAP Master Intro */}
       {appState === 'intro' && <IntroSequence onComplete={handleIntroComplete} />}
 
-      {/* Main Experience Page */}
+      {/* 4. Unified Heritage Main Experience Page */}
       <div
-        className={`relative z-20 flex flex-col items-center justify-between min-h-screen px-4 pb-12 transition-opacity duration-1000 ${
+        className={`relative z-20 flex flex-col items-center justify-between min-h-screen px-4 pb-8 sm:pb-12 transition-opacity duration-1000 ${
           appState === 'main' ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
       >
-        {/* Traditional Hanging Toran Arch (Mango Leaves & Marigolds) */}
+        {/* Top: Natural Marigold & Mango-Leaf Toran Arch with Hanging Bells */}
         <ToranArch className="absolute top-0 left-0 right-0 z-30" />
 
-        {/* Ambient Architectural Jharokha Arch Frame */}
-        <JharokhaFrame className="z-10" opacity={0.22} />
+        {/* Ambient Subtle Architectural Jharokha Arch Frame */}
+        <JharokhaFrame className="z-10" opacity={0.14} />
 
-        {/* Top Header */}
+        {/* Centre: Sacred Typography & Blessing Message */}
         <FestiveHeader />
 
-        {/* Centerpiece Diya Stage */}
-        <div className="flex-1 flex flex-col items-center justify-center w-full max-w-4xl my-2">
+        {/* Centrepiece: Master Sculpted Brass Diya */}
+        <div className="flex-1 flex flex-col items-center justify-center w-full max-w-4xl my-1 sm:my-2">
           <DiyaStage />
 
-          {/* Interactive Action Dock */}
+          {/* Bottom Controls: The 3 Carefully Spaced Primary Action Controls */}
           <nav
-            aria-label="Festive actions"
-            className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mt-6 max-w-2xl px-2"
+            aria-label="Festive primary actions"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mt-4 sm:mt-6 w-full max-w-xl px-2"
           >
-            {/* Button 1: Send Happy Diwali */}
+            {/* Primary: Send Happy Diwali */}
             <button
               onClick={() => {
                 audioEngine.playBellChime(659.25);
                 setActiveModal('greeting');
               }}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-[#ffd700] via-[#ffaa00] to-[#ffd700] text-[#140306] font-bold text-xs sm:text-sm tracking-wide shadow-[0_4px_20px_rgba(255,215,0,0.35)] hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#120306] transition-all cursor-pointer"
-              aria-label="Send Happy Diwali greeting card"
+              className="w-full sm:w-auto min-w-[180px] h-12 flex items-center justify-center gap-2.5 px-6 rounded-full bg-gradient-to-r from-[#d4af37] via-[#f7e49a] to-[#c59b27] text-[#180309] font-bold text-xs sm:text-sm tracking-wider uppercase shadow-[0_4px_22px_rgba(212,175,55,0.38)] hover:scale-[1.03] active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffd700] focus-visible:ring-offset-2 focus-visible:ring-offset-[#140307] transition-all cursor-pointer"
+              aria-label="Send Happy Diwali custom greeting card"
             >
-              <Send className="w-4 h-4 fill-current" />
+              <Send className="w-4 h-4 fill-current text-[#180309]" />
               <span>Send Happy Diwali</span>
             </button>
 
-            {/* Button 2: Light a Diya */}
+            {/* Secondary: Light a Diya */}
             <button
               onClick={() => {
                 audioEngine.playBellChime(783.99);
                 setActiveModal('light-diya');
               }}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#20080d] border border-[#ffd700]/70 text-[#ffd700] font-semibold text-xs sm:text-sm shadow-[0_4px_16px_rgba(0,0,0,0.6)] hover:bg-[#350c14] hover:border-[#ffd700] hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#120306] transition-all cursor-pointer"
-              aria-label="Light a sacred Diwali Diya"
+              className="w-full sm:w-auto min-w-[160px] h-12 flex items-center justify-center gap-2.5 px-6 rounded-full bg-[#20050d] border border-[#d4af37]/80 text-[#fae5b6] font-semibold text-xs sm:text-sm tracking-wider uppercase shadow-[0_4px_18px_rgba(0,0,0,0.65)] hover:bg-[#2e0915] hover:border-[#ffd700] hover:shadow-[0_4px_20px_rgba(255,160,0,0.3)] hover:scale-[1.03] active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffd700] focus-visible:ring-offset-2 focus-visible:ring-offset-[#140307] transition-all cursor-pointer"
+              aria-label="Dedicate and light a sacred virtual Diya"
             >
-              <Flame className="w-4 h-4 text-[#ff7700] fill-current" />
+              <Flame className="w-4 h-4 text-[#ff8c00] fill-current animate-pulse" />
               <span>Light a Diya</span>
             </button>
 
-            {/* Button 3: Vedic Blessings */}
+            {/* Tertiary: Vedic Blessing */}
             <button
               onClick={() => {
                 audioEngine.playBellChime(587.33);
                 setActiveModal('blessing-mantra');
               }}
-              className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#20080d] border border-[#ffd700]/60 text-[#ffeec2] font-semibold text-xs sm:text-sm shadow-[0_4px_16px_rgba(0,0,0,0.6)] hover:bg-[#300c14] hover:border-[#ffd700] hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#120306] transition-all cursor-pointer"
+              className="w-full sm:w-auto min-w-[160px] h-12 flex items-center justify-center gap-2.5 px-5 rounded-full bg-[#180309] border border-[#d4af37]/50 text-[#fae5b6] font-semibold text-xs sm:text-sm tracking-wider uppercase shadow-[0_4px_18px_rgba(0,0,0,0.65)] hover:bg-[#250711] hover:border-[#d4af37] hover:scale-[1.03] active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffd700] focus-visible:ring-offset-2 focus-visible:ring-offset-[#140307] transition-all cursor-pointer"
               aria-label="Vedic Shanti Mantra and Divine Blessings"
             >
-              <BookOpen className="w-4 h-4 text-[#ffd700]" />
+              <BookOpen className="w-4 h-4 text-[#d4af37]" />
               <span>Vedic Blessing</span>
             </button>
+          </nav>
 
-            {/* Button 4: Share the Joy */}
+          {/* Secondary Utility Controls Bar */}
+          <div className="flex items-center justify-center gap-3 sm:gap-6 mt-4 text-xs font-medium text-[#f5dfb8]/75">
+            {/* Share the Joy */}
             <button
               onClick={() => {
                 audioEngine.playBellChime(880);
                 setActiveModal('share');
               }}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-[#de1360] to-[#800a2a] border border-[#ffd700]/50 text-white font-semibold text-xs sm:text-sm shadow-[0_4px_16px_rgba(222,19,96,0.3)] hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#120306] transition-all cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:text-[#ffd700] hover:bg-[#ffd700]/10 transition-all cursor-pointer"
               aria-label="Share the Joy of Diwali"
             >
-              <Share2 className="w-4 h-4 text-[#ffd700]" />
-              <span>Share the Joy</span>
+              <Share2 className="w-3.5 h-3.5 text-[#d4af37]" />
+              <span>Share Joy</span>
             </button>
 
-            {/* Button 4: Burst Fireworks */}
+            <span className="text-[#d4af37]/30 select-none">•</span>
+
+            {/* Burst Fireworks */}
             <button
               onClick={handleBurstFireworks}
-              className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#20080d] border border-[#ffd700]/50 text-[#ffeec2] font-semibold text-xs sm:text-sm shadow-[0_4px_16px_rgba(0,0,0,0.6)] hover:bg-[#300c14] hover:border-[#ffd700] hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#120306] transition-all cursor-pointer"
-              aria-label="Burst celebratory Diwali fireworks"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:text-[#ffd700] hover:bg-[#ffd700]/10 transition-all cursor-pointer"
+              aria-label="Burst celebratory fireworks"
             >
-              <PartyPopper className="w-4 h-4 text-[#ff7700]" />
+              <PartyPopper className="w-3.5 h-3.5 text-[#ff8c00]" />
               <span>Burst Fireworks</span>
             </button>
 
-            {/* Button 5: Replay Cinematic Intro */}
+            <span className="text-[#d4af37]/30 select-none">•</span>
+
+            {/* Replay Intro */}
             <button
               onClick={() => {
                 audioEngine.playBellChime(523.25);
                 setAppState('intro');
               }}
-              className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/5 border border-white/20 text-[#ffeaaf] font-medium text-xs sm:text-sm hover:bg-white/10 hover:border-[#ffd700]/60 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#120306] transition-all cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:text-[#ffd700] hover:bg-[#ffd700]/10 transition-all cursor-pointer"
               aria-label="Replay the cinematic introduction animation"
             >
-              <RotateCcw className="w-4 h-4 text-[#ffd700]" />
+              <RotateCcw className="w-3.5 h-3.5 text-[#d4af37]" />
               <span>Replay Intro</span>
             </button>
-          </nav>
+          </div>
         </div>
 
-        {/* Cinematic Festive Footer */}
-        <footer className="w-full max-w-4xl text-center pt-8 border-t border-[#ffd700]/15 mt-8 select-none">
-          <div className="flex items-center justify-center gap-2 text-xs text-[#ffd700]/80">
-            <Sparkles className="w-3.5 h-3.5 text-[#ffd700]" />
-            <span>Celebrating the eternal victory of Dharma, Light, and Goodness</span>
-            <Sparkles className="w-3.5 h-3.5 text-[#ffd700]" />
+        {/* Refined Heritage Footer */}
+        <footer className="w-full max-w-4xl text-center pt-6 border-t border-[#d4af37]/20 mt-4 sm:mt-6 select-none">
+          <div className="flex items-center justify-center gap-2 text-xs sm:text-sm text-[#fae5b6]/85">
+            <Sparkles className="w-3 h-3 text-[#d4af37]" />
+            <span style={{ fontFamily: 'var(--font-rozha), serif' }}>
+              ॥ तमसो मा ज्योतिर्गमय • असतो मा सद्गमय ॥
+            </span>
+            <Sparkles className="w-3 h-3 text-[#d4af37]" />
           </div>
-          <p className="text-[11px] text-zinc-500 mt-1">
-            Wishing You & Your Family a Peaceful, Healthy, and Prosperous Deepavali 2026
+          <p className="text-[11px] text-[#f5dfb8]/60 mt-1 tracking-wider uppercase">
+            Wishing You & Your Family an Auspicious, Healthy & Prosperous Deepavali 2026
           </p>
         </footer>
       </div>
@@ -184,7 +197,7 @@ function DiwaliExperienceContent() {
       {/* Floating Audio Controller */}
       <AudioController />
 
-      {/* Modals */}
+      {/* Interactive Feature Modals */}
       <GreetingCardModal
         isOpen={activeModal === 'greeting'}
         onClose={() => setActiveModal('none')}
@@ -216,7 +229,7 @@ export default function Home() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-screen bg-[#120306] flex items-center justify-center text-[#ffd700]">
+        <div className="min-h-screen bg-[#120306] flex items-center justify-center text-[#d4af37]">
           <span className="text-xl font-bold tracking-widest animate-pulse">
             ॥ शुभ दीपावली ॥
           </span>
